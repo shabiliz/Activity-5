@@ -1,0 +1,301 @@
+//NumOut(x,y,number)
+//TextOut(x,y,string)
+//ButtonPressed(BTNCENTER,1)
+//ButtonPressed(BTNRIGHT,1)
+//ButtonPressed(BTNLEFT,1)
+
+
+int i, d, a, x, y ;
+
+
+
+//Reset all value
+sub reset()
+{
+d=0;
+a=0;
+}
+
+//home screen event
+sub homescreen()
+{
+
+i=1;
+ClearScreen();
+TextOut(0,LCD_LINE1,"    GROUP C     ");
+Wait(500);
+TextOut(0,LCD_LINE3," Enter any coordinate");
+Wait(500);
+
+while(!ButtonPressed(BTNCENTER,1))
+{
+TextOut(8,LCD_LINE7,"Push to begin  ");
+if(i>8)
+{
+if(i==16) i=1;
+TextOut(0,LCD_LINE7,"                 ");
+}
+
+Wait(50);
+i++;
+}
+until(!ButtonPressed(BTNCENTER,1));
+ClearScreen();
+TextOut(0,LCD_LINE2,"Press Right Btn");
+Wait(500);
+TextOut(0,LCD_LINE3,"To add value");
+Wait(500);
+TextOut(0,LCD_LINE5,"Press Left Btn");
+Wait(500);
+TextOut(0,LCD_LINE6,"To reduce value");
+Wait(500);
+}
+
+
+///////////////////////////////////////////////
+//receiving value a1 event
+sub angle1()
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"Coordinate X*");
+
+while(!ButtonPressed(BTNCENTER,1))
+{
+if(ButtonPressed(BTNRIGHT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"Coordinate X*");
+Wait(500);
+a++;
+NumOut(41,LCD_LINE6,a);
+}
+
+if(ButtonPressed(BTNLEFT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"Coordninate X*");
+Wait(500);
+a--;
+NumOut(41,LCD_LINE6,a);
+}
+
+}
+until(!ButtonPressed(BTNCENTER,1));
+}
+
+//receiving value d1 event
+sub distance1()
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Coordinate Y*");
+
+while(!ButtonPressed(BTNCENTER,1))
+{
+if(ButtonPressed(BTNRIGHT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Coordinate Y*");
+Wait(500);
+d++;
+NumOut(41,LCD_LINE6,d);
+}
+
+if(ButtonPressed(BTNLEFT,1))
+{
+ClearScreen();
+TextOut(0,LCD_LINE2,"*Coordinate Y*");
+Wait(500);
+d--;
+NumOut(41,LCD_LINE6,d);
+}
+
+}
+until(!ButtonPressed(BTNCENTER,1));
+}
+
+sub displayAll()
+{
+ClearScreen();
+
+while(!ButtonPressed(BTNCENTER,1))
+{
+TextOut(0,LCD_LINE1,"Coordinate X:");
+NumOut(41,LCD_LINE2,a);
+TextOut(0,LCD_LINE3,"Coordinate Y:");
+NumOut(41,LCD_LINE4,d);
+
+}
+until(!ButtonPressed(BTNCENTER,1));
+
+}
+
+sub shortestdistance()
+{
+
+if(a==0 && d==0){
+Wait(1000);
+RotateMotor( OUT_BC, 50, 0);
+Wait(1000);
+Off(OUT_BC);
+}
+else if(a==1 && d==0){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 180,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 592.76);
+Wait(1000);
+Off(OUT_BC);
+}
+else if(a==2 && d==0){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 180,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 1185.52);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==3 && d==0){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 180,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 1778.28);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==4 && d==0){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 180,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 2371.04);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==0 && d==1){
+Wait(1000);
+RotateMotor( OUT_BC, 50, 592.76);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==0 && d==2){
+Wait(1000);
+RotateMotor( OUT_BC, 50, 1185.52);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==0 && d==3){
+Wait(1000);
+RotateMotor( OUT_BC, 50, 1778.28);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==1 && d==1){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 90,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 838.29);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==2 && d==1){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 53.13,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 1325.45);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==3 && d==1){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 36.87,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 1874.47);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==4 && d==1){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 28.07,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 2444.01);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==1 && d==2){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 126.87,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 1325.459);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==2 && d==2){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 90,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 1676.58);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==3 && d==2){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 112.7,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 2137.23);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==4 && d==2){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 127,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 2650.90);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==1 && d==3){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 36.87,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 1874.47);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==2 && d==3){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 67.38,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 2137.23);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==3 && d==3){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 90,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 2514.87);
+Wait(1000);
+Off(OUT_BC);
+}
+else if (a==4 && d==3){
+Wait(1000);
+RotateMotorEx( OUT_BC, 50, 73.74,100, true, true);
+Wait(1000);
+RotateMotor( OUT_BC, 50, 2963.8);
+Wait(1000);
+Off(OUT_BC);
+}
+else {
+Off(OUT_BC);
+}
+
+}
+
+task main()
+{
+reset();
+homescreen();
+angle1();
+distance1();
+displayAll();
+shortestdistance();
+}
